@@ -1,0 +1,55 @@
+@font-face {
+  font-family: "LexendDeca";
+  src: url("./fonts/LexendDeca-Regular.ttf") format("ttf"),
+    url("./fonts/LexendDeca-Black.ttf") format("ttf"),
+    url("./fonts/LexendDeca-Bold.ttf") format("ttf"),
+    url("./fonts/LexendDeca-ExtraBold.ttf") format("ttf"),
+    url("./fonts/LexendDeca-ExtraLight.ttf") format("ttf"),
+    url("./fonts/LexendDeca-Light.ttf") format("ttf"),
+    url("./fonts/LexendDeca-Medium.ttf") format("ttf"),
+    url("./fonts/LexendDeca-SemiBold.ttf") format("ttf"),
+    url("./fonts/LexendDeca-Thin.ttf") format("ttf");
+}
+
+:root {
+  font-family: "LexendDeca", Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #1c222d;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  height: 100%;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
