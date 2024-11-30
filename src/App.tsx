@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router";
 import Login from "./Auth/Login.tsx";
 import AuthLayout from "./Auth/AuthLayout.tsx";
-import "./App.scss";
 import AuthProvider from "./Auth/AuthProvider.tsx";
 import Protected from "./Protected.tsx";
 import Dashboard from "./Dashboard.tsx";
 import MainLayout from "./MainLayout.tsx";
+import "./App.scss";
 
 function App() {
   return (

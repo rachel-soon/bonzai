@@ -24,7 +24,10 @@ function Auth() {
           <div className="hero-body">
             <div className="container columns is-vcentered is-centered">
               <div className="column">
-                <p className="title">Spark Time 🐦‍🔥</p>
+                <p className="title">
+                  Bonzai &nbsp;
+                  <i className="fa-solid fa-tree"></i>
+                </p>
                 <p className="subtitle">Focus on what matters.</p>
               </div>
 
