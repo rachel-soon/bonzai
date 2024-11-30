@@ -20,6 +20,11 @@ function SideMenu() {
             <i className="fa-solid fa-chart-line"></i> &nbsp; Reports
           </a>
         </li>
+        <li>
+          <a>
+            <i className="fa-solid fa-apple-whole"></i> &nbsp; Zen Mode
+          </a>
+        </li>
       </ul>
       {/* <p className="menu-label">Administration</p>
       <ul className="menu-list">
