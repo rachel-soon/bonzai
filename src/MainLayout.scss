@@ -1,0 +1,16 @@
+.main-layout {
+  display: flex !important;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  // border: 2px dotted white;
+}
+
+.navbar {
+  // border: 2px solid white;
+  padding: 0.5rem;
+}
+
+.columns {
+  height: 100%;
+}

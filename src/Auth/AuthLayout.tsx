@@ -10,7 +10,7 @@ function Auth() {
               <div className="navbar-end">
                 <a
                   className="navbar-item"
-                  href="https://github.com/rachel-soon/spark-time"
+                  href="https://github.com/rachel-soon/bonzai"
                   target="_blank"
                 >
                   <i className="fa-brands fa-github"></i>GitHub
