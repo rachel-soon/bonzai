@@ -5,6 +5,7 @@ import AuthProvider from "./Auth/AuthProvider.tsx";
 import Protected from "./Protected.tsx";
 import Dashboard from "./Dashboard.tsx";
 import MainLayout from "./MainLayout.tsx";
+import Register from "./Auth/Register.tsx";
 import "./App.scss";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route element={<AuthLayout />}>
             <Route path="login" element={<Login />}></Route>
+            <Route path="register" element={<Register />}></Route>
           </Route>
 
           <Route element={<Protected />}>

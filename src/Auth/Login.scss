@@ -6,3 +6,16 @@
     padding: 1rem;
   }
 }
+
+.create-account-link {
+  transition: all 0.1s ease-in-out;
+  padding-bottom: 1px;
+
+  &:hover {
+    border-bottom: 0.9px solid inherit;
+    cursor: pointer;
+    // transform: scale(1.1);
+    // font-size: 0.76rem;
+    font-weight: bold;
+  }
+}

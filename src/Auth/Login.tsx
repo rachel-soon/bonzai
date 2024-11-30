@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import "./Login.scss";
 import { useAuth } from "../hooks/useAuth";
+import { NavLink } from "react-router";
+import "./Login.scss";
 
 function AuthLogin() {
   const [email, setEmail] = useState("");
@@ -50,6 +51,13 @@ function AuthLogin() {
               autoComplete="on"
               onChange={(e) => setPassword(e.target.value)}
             />
+          </div>
+
+          <div className="is-size-7">
+            Don't have an account?{" "}
+            <NavLink to="/register" className="create-account-link">
+              Register
+            </NavLink>
           </div>
 
           <button
