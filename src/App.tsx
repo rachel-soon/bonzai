@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router";
 import Login from "./Auth/Login.tsx";
-import AuthLayout from "./Auth/AuthLayout.tsx";
+import AuthLayout from "./Layout/AuthLayout.tsx";
 import AuthProvider from "./Auth/AuthProvider.tsx";
 import Protected from "./Protected.tsx";
-import Dashboard from "./Dashboard.tsx";
-import MainLayout from "./MainLayout.tsx";
+import Board from "./Board.tsx";
+import MainLayout from "./Layout/MainLayout.tsx";
 import Register from "./Auth/Register.tsx";
 import "./App.scss";
 
@@ -20,7 +20,7 @@ function App() {
 
           <Route element={<Protected />}>
             <Route element={<MainLayout />}>
-              <Route index path="dashboard" element={<Dashboard />} />
+              <Route index path="board" element={<Board />} />
             </Route>
           </Route>
         </Routes>

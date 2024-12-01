@@ -6,7 +6,7 @@ function SideMenu() {
       <p className="menu-label">General</p>
       <ul className="menu-list">
         <li>
-          <a>
+          <a className="is-active">
             <i className="fa-brands fa-flipboard"></i> &nbsp; Board
           </a>
         </li>

@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
-import { useAuth } from "./hooks/useAuth";
-import SideMenu from "./SideMenu";
+import { useAuth } from "../hooks/useAuth";
+import SideMenu from "../SideMenu";
 import "./MainLayout.scss";
 
 function MainLayout() {

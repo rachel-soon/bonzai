@@ -18,7 +18,7 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     if (token) {
       localStorage.setItem("site", token);
-      navigate("/dashboard");
+      navigate("/board"); // TODO: hmmm
     } else {
       localStorage.removeItem("site");
     }
