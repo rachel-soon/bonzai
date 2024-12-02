@@ -9,13 +9,17 @@ function MainLayout() {
     <>
       <main className="main-layout">
         <nav className="navbar">
-          <div className="container">
-            <div id="navMenu" className="navbar-menu">
-              <div className="navbar-end">
-                <a className="navbar-item" onClick={auth!.logOut}>
-                  Logout
-                </a>
+          <div id="navMenu" className="navbar-menu">
+            <div className="navbar-start">
+              <div className="navbar-item is-size-3 has-text-weight-bold">
+                <i className="fa-solid fa-tree"></i>
+                Bonzai
               </div>
+            </div>
+            <div className="navbar-end">
+              <a className="navbar-item" onClick={auth!.logOut}>
+                Logout
+              </a>
             </div>
           </div>
         </nav>

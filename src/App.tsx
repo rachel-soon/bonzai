@@ -3,11 +3,9 @@ import Login from "./Auth/Login.tsx";
 import AuthLayout from "./Layout/AuthLayout.tsx";
 import AuthProvider from "./Auth/AuthProvider.tsx";
 import Protected from "./Protected.tsx";
-import Board from "./Board.tsx";
 import MainLayout from "./Layout/MainLayout.tsx";
 import Register from "./Auth/Register.tsx";
 import "./App.scss";
-
 function App() {
   return (
     <>
@@ -19,9 +17,7 @@ function App() {
           </Route>
 
           <Route element={<Protected />}>
-            <Route element={<MainLayout />}>
-              <Route index path="board" element={<Board />} />
-            </Route>
+            <Route element={<MainLayout />}></Route>
           </Route>
         </Routes>
       </AuthProvider>
