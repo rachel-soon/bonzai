@@ -28,7 +28,7 @@ function MainLayout() {
           <div className="column is-2">
             <SideMenu />
           </div>
-          <div className="column">
+          <div className="column is-10 pr-6 pl-4">
             <Outlet />
           </div>
         </div>

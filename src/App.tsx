@@ -5,7 +5,10 @@ import AuthProvider from "./Auth/AuthProvider.tsx";
 import Protected from "./Protected.tsx";
 import MainLayout from "./Layout/MainLayout.tsx";
 import Register from "./Auth/Register.tsx";
+import Board from "./Board.tsx";
+
 import "./App.scss";
+
 function App() {
   return (
     <>
@@ -17,7 +20,9 @@ function App() {
           </Route>
 
           <Route element={<Protected />}>
-            <Route element={<MainLayout />}></Route>
+            <Route element={<MainLayout />}>
+              <Route path="/" element={<Board />}></Route>
+            </Route>
           </Route>
         </Routes>
       </AuthProvider>
