@@ -2,9 +2,9 @@ import "./Task.scss";
 import { useDraggable } from "@dnd-kit/core";
 // import { CSS } from "@dnd-kit/utilities";
 
-function Task({ task }) {
+function Task({ id, children }) {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: "unique-id",
+    id: id,
   });
 
   const style = transform
@@ -12,10 +12,6 @@ function Task({ task }) {
         transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
       }
     : undefined;
-  // Within your component that receives `transform` from `useDraggable`:
-  //   const style = {
-  //     transform: CSS.Translate.toString(transform),
-  //   };
 
   return (
     <div
@@ -25,8 +21,7 @@ function Task({ task }) {
       {...attributes}
       style={style}
     >
-      {/* {task.content} */}
-      Hello
+      {children}
     </div>
   );
 }
