@@ -1,3 +1,24 @@
 #root {
   width: 100%;
 }
+
+.column-card {
+  background-color: #232a31 !important;
+  box-shadow: none !important;
+  padding: 1rem 1.5rem !important;
+  color: white !important;
+  border-radius: 0.5rem !important;
+}
+
+.task-card {
+  color: white !important;
+  padding: 0.7rem !important;
+  box-shadow: none !important;
+  // border: 1px solid #44546f;
+  border-radius: 0.3rem !important;
+  margin: 0.5rem 0rem !important;
+}
+
+.btn-task {
+  text-decoration: none !important;
+}

@@ -36,6 +36,7 @@ function AuthLogin() {
               className="input is-rounded"
               type="text"
               placeholder="Email"
+              autoComplete="on"
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
@@ -48,7 +49,6 @@ function AuthLogin() {
               className="input is-rounded"
               type="password"
               placeholder="Password"
-              autoComplete="on"
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
