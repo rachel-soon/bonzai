@@ -2,6 +2,7 @@
 import Column from "./Column";
 import { DndContext } from "@dnd-kit/core";
 import { useState, useRef, useEffect } from "react";
+import { useKey } from "./hooks/useKey";
 
 interface Task {
   description: string;
@@ -29,12 +30,26 @@ function Board() {
   const [taskList, setTaskList] = useState<Array<Task>>([]);
   const [currentColumn, setCurrentColumn] = useState("");
   const [newTask, setNewTask] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const taskInput = useRef<HTMLInputElement>(null);
   // TODO: what is this type??
   const handleDragEnd = (event: unknown) => {
     console.log(event.over.id);
   };
+
+  useKey("Enter", function () {
+    if (document.activeElement === taskInput.current) {
+      addTask();
+    }
+  });
+  useKey("Escape", function () {
+    if (document.activeElement === taskInput.current) {
+      setNewTask("");
+      setCurrentColumn("");
+      setIsLoading(false);
+    }
+  });
 
   useEffect(() => {
     if (currentColumn) {
@@ -47,14 +62,19 @@ function Board() {
   };
 
   const addTask = () => {
+    setIsLoading(true);
+
     const task: Task = {
       description: newTask,
       column_id: currentColumn,
     };
 
-    setTaskList([...taskList, task]);
-    setNewTask("");
-    setCurrentColumn("");
+    setTimeout(() => {
+      setTaskList([...taskList, task]);
+      setNewTask("");
+      setCurrentColumn("");
+      setIsLoading(false);
+    }, 450);
   };
 
   return (
@@ -70,7 +90,10 @@ function Board() {
                   {taskList.map(
                     (task) =>
                       task.column_id === column.id && (
-                        <div>{task.description}</div>
+                        <div className="my-3 is-flex is-align-items-center">
+                          <i className="fa-solid fa-fire"></i>
+                          <div className="ml-3">{task.description}</div>
+                        </div>
                       )
                   )}
                 </div>
@@ -86,7 +109,9 @@ function Board() {
 
                     <div className="is-flex is-justify-content-flex-start mt-4">
                       <button
-                        className="button is-link mr-2"
+                        className={`button is-link mr-2 ${
+                          isLoading && "is-loading"
+                        }`}
                         onClick={() => addTask()}
                       >
                         Add
