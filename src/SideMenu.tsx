@@ -1,5 +1,3 @@
-import "./SideMenu.scss";
-
 function SideMenu() {
   return (
     <aside className="menu">

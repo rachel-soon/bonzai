@@ -6,7 +6,6 @@ import { useState, useRef, useEffect } from "react";
 interface Task {
   description: string;
   column_id: string;
-  status: string;
 }
 
 // https://egghead.io/lessons/react-reorder-a-list-with-react-beautiful-dnd
@@ -27,8 +26,10 @@ function Board() {
     },
   ];
 
-  const [taskList, setTaskList] = useState([]);
-  const [columnIsAdding, setColumnIsAdding] = useState("");
+  const [taskList, setTaskList] = useState<Array<Task>>([]);
+  const [currentColumn, setCurrentColumn] = useState("");
+  const [newTask, setNewTask] = useState("");
+
   const taskInput = useRef<HTMLInputElement>(null);
   // TODO: what is this type??
   const handleDragEnd = (event: unknown) => {
@@ -36,13 +37,24 @@ function Board() {
   };
 
   useEffect(() => {
-    if (columnIsAdding) {
+    if (currentColumn) {
       taskInput.current?.focus();
     }
-  }, [columnIsAdding]);
+  }, [currentColumn]);
 
   const onAddTask = (columnId: string) => {
-    setColumnIsAdding(columnId);
+    setCurrentColumn(columnId);
+  };
+
+  const addTask = () => {
+    const task: Task = {
+      description: newTask,
+      column_id: currentColumn,
+    };
+
+    setTaskList([...taskList, task]);
+    setNewTask("");
+    setCurrentColumn("");
   };
 
   return (
@@ -54,19 +66,34 @@ function Board() {
               <Column id={column.id} key={column.id}>
                 <div className="mb-5">{column.title}</div>
 
-                {columnIsAdding === column.id ? (
+                <div>
+                  {taskList.map(
+                    (task) =>
+                      task.column_id === column.id && (
+                        <div>{task.description}</div>
+                      )
+                  )}
+                </div>
+
+                {currentColumn === column.id ? (
                   <div>
                     <input
                       ref={taskInput}
                       className="input"
                       placeholder="What needs to be done?"
+                      onChange={(e) => setNewTask(e.target.value)}
                     />
 
                     <div className="is-flex is-justify-content-flex-start mt-4">
-                      <button className="button is-link mr-2">Add</button>
+                      <button
+                        className="button is-link mr-2"
+                        onClick={() => addTask()}
+                      >
+                        Add
+                      </button>
                       <button
                         className="button is-text btn-task"
-                        onClick={() => setColumnIsAdding("")}
+                        onClick={() => setCurrentColumn("")}
                       >
                         Cancel
                       </button>

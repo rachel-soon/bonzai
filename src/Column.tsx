@@ -1,4 +1,3 @@
-import "./Column.scss";
 import { useDroppable } from "@dnd-kit/core";
 
 function Column({ children, id }) {
