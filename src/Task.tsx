@@ -1,6 +1,16 @@
 import { useEffect, useRef, useState } from "react";
+import PropTypes, { InferProps } from "prop-types";
 
-function Task({ task, onRemoveTask }) {
+Task.propTypes = {
+  task: {
+    id: PropTypes.string,
+    description: PropTypes.string,
+    column_id: PropTypes.string,
+  },
+  onRemoveTask: PropTypes.func.isRequired,
+};
+
+function Task({ task, onRemoveTask }: InferProps<typeof Task.propTypes>) {
   const [, setTaskDescription] = useState(task.description);
   const [readonly, setReadOnly] = useState(true);
   const input = useRef<HTMLInputElement>(null);

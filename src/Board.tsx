@@ -5,7 +5,7 @@ import { DndContext } from "@dnd-kit/core";
 import { useState, useRef, useEffect } from "react";
 import { useKey } from "./hooks/useKey";
 
-interface Task {
+interface ITask {
   id: string;
   description: string;
   column_id: string;
@@ -45,7 +45,7 @@ function generateId(length: number) {
 }
 
 function Board() {
-  const [taskList, setTaskList] = useState<Array<Task>>([]);
+  const [taskList, setTaskList] = useState<Array<ITask>>([]);
   const [currentColumn, setCurrentColumn] = useState("");
   const [newTask, setNewTask] = useState("");
   const [isLoading, setIsLoading] = useState(false);
