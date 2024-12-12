@@ -1,39 +1,56 @@
 // import initialData from "./data";
 import Column from "./Column";
+import Task from "./Task";
 import { DndContext } from "@dnd-kit/core";
 import { useState, useRef, useEffect } from "react";
 import { useKey } from "./hooks/useKey";
 
 interface Task {
+  id: string;
   description: string;
   column_id: string;
 }
 
 // https://egghead.io/lessons/react-reorder-a-list-with-react-beautiful-dnd
 // NOTE: onDragEnd is the only required callback
-function Board() {
-  const columns = [
-    {
-      title: "To Do",
-      id: "to-do",
-    },
-    {
-      title: "In Progress",
-      id: "in-progress",
-    },
-    {
-      title: "QA/QC",
-      id: "qa-qc",
-    },
-  ];
 
+// Today: Get the task component to work
+
+const columns = [
+  {
+    title: "To Do",
+    id: "to-do",
+  },
+  {
+    title: "In Progress",
+    id: "in-progress",
+  },
+  // {
+  //   title: "QA/QC",
+  //   id: "qa-qc",
+  // },
+];
+
+function generateId(length: number) {
+  let result = "";
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const charactersLength = characters.length;
+  let counter = 0;
+  while (counter < length) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    counter += 1;
+  }
+  return result;
+}
+
+function Board() {
   const [taskList, setTaskList] = useState<Array<Task>>([]);
   const [currentColumn, setCurrentColumn] = useState("");
   const [newTask, setNewTask] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
   const taskInput = useRef<HTMLInputElement>(null);
-  // TODO: what is this type??
+
   const handleDragEnd = (event: unknown) => {
     console.log(event.over.id);
   };
@@ -43,6 +60,7 @@ function Board() {
       addTask();
     }
   });
+
   useKey("Escape", function () {
     if (document.activeElement === taskInput.current) {
       setNewTask("");
@@ -57,14 +75,11 @@ function Board() {
     }
   }, [currentColumn]);
 
-  const onAddTask = (columnId: string) => {
-    setCurrentColumn(columnId);
-  };
-
   const addTask = () => {
     setIsLoading(true);
 
     const task: Task = {
+      id: generateId(10),
       description: newTask,
       column_id: currentColumn,
     };
@@ -77,12 +92,19 @@ function Board() {
     }, 450);
   };
 
+  const removeTask = (id: string) => {
+    console.log("board", id);
+    setTaskList(taskList.filter((task) => task.id === id));
+    setCurrentColumn("");
+    setIsLoading(false);
+  };
+
   return (
     <div className="flex flex-col">
       <DndContext onDragEnd={handleDragEnd}>
         <div className="columns">
           {columns.map((column) => (
-            <div className="column">
+            <div className="column" key={column.id}>
               <Column id={column.id} key={column.id}>
                 <div className="mb-5">{column.title}</div>
 
@@ -90,10 +112,11 @@ function Board() {
                   {taskList.map(
                     (task) =>
                       task.column_id === column.id && (
-                        <div className="my-3 is-flex is-align-items-center">
-                          <i className="fa-solid fa-fire"></i>
-                          <div className="ml-3">{task.description}</div>
-                        </div>
+                        <Task
+                          key={task.id}
+                          task={task}
+                          onRemoveTask={removeTask}
+                        />
                       )
                   )}
                 </div>
@@ -112,6 +135,7 @@ function Board() {
                         className={`button is-link mr-2 ${
                           isLoading && "is-loading"
                         }`}
+                        disabled={newTask === ""}
                         onClick={() => addTask()}
                       >
                         Add
@@ -128,7 +152,7 @@ function Board() {
                   <button
                     type="button"
                     className="button is-text btn-task is-fullwidth is-left is-flex is-justify-content-flex-start"
-                    onClick={() => onAddTask(column.id)}
+                    onClick={() => setCurrentColumn(column.id)}
                   >
                     <i className="fa-solid fa-plus"></i>
                     <div className="ml-3 border">Add task</div>

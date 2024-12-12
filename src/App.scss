@@ -14,9 +14,15 @@
   color: white !important;
   padding: 0.7rem !important;
   box-shadow: none !important;
-  // border: 1px solid #44546f;
-  border-radius: 0.3rem !important;
+  border-radius: 0.5rem !important;
   margin: 0.5rem 0rem !important;
+  border: 1px solid transparent;
+  transition: all 0.08s ease-in-out;
+
+  &:hover {
+    border: 1px solid #44546f;
+    cursor: pointer;
+  }
 }
 
 .btn-task {
@@ -27,4 +33,15 @@
   //   border: 2px solid white !important;
   height: 100%;
   padding-left: 1rem;
+}
+
+.icon-container {
+  // margin: 0 0.5rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 5px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #44546f;
+  }
 }
