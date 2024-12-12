@@ -93,8 +93,7 @@ function Board() {
   };
 
   const removeTask = (id: string) => {
-    console.log("board", id);
-    setTaskList(taskList.filter((task) => task.id === id));
+    setTaskList(taskList.filter((task) => task.id !== id));
     setCurrentColumn("");
     setIsLoading(false);
   };

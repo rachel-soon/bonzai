@@ -18,9 +18,8 @@ function Task({ task, onRemoveTask }) {
   };
 
   const handleDelete = (id: string) => {
-    setReadOnly(false);
+    setReadOnly(true);
     onRemoveTask(id);
-    console.log("deleting task");
   };
 
   return (
