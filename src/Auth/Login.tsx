@@ -3,7 +3,7 @@ import { useAuth } from "../hooks/useAuth";
 import { NavLink } from "react-router";
 import "./Login.scss";
 
-function AuthLogin() {
+export default function AuthLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -73,5 +73,3 @@ function AuthLogin() {
     </form>
   );
 }
-
-export default AuthLogin;

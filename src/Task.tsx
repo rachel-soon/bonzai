@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { ITask } from "./Board";
-interface TaskProps {
+interface PropsTask {
   task: ITask;
   onRemoveTask: (id: string) => void;
   onEditTask: (task: ITask, description: string) => void;
 }
 
-function Task({ task, onRemoveTask, onEditTask }: TaskProps) {
+export default function Task({ task, onRemoveTask, onEditTask }: PropsTask) {
   const [taskDescription, setTaskDescription] = useState(task.description);
   const [readonly, setReadOnly] = useState(true);
   const input = useRef<HTMLInputElement>(null);
@@ -62,5 +62,3 @@ function Task({ task, onRemoveTask, onEditTask }: TaskProps) {
     </>
   );
 }
-
-export default Task;

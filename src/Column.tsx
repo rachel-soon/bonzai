@@ -1,6 +1,12 @@
 import { useDroppable } from "@dnd-kit/core";
+import React from "react";
 
-function Column({ children, id }) {
+interface PropsColumn {
+  children: React.ReactNode;
+  id: string;
+}
+
+export default function Column({ children, id }: PropsColumn) {
   const { setNodeRef, isOver } = useDroppable({
     id: id,
   });
@@ -17,5 +23,3 @@ function Column({ children, id }) {
     </>
   );
 }
-
-export default Column;

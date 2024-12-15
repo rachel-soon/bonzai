@@ -9,7 +9,7 @@ import Board from "./Board.tsx";
 
 import "./App.scss";
 
-function App() {
+export default function App() {
   return (
     <>
       <AuthProvider>
@@ -29,5 +29,3 @@ function App() {
     </>
   );
 }
-
-export default App;
