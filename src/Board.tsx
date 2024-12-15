@@ -25,10 +25,6 @@ const columns = [
     title: "In Progress",
     id: "in-progress",
   },
-  // {
-  //   title: "QA/QC",
-  //   id: "qa-qc",
-  // },
 ];
 
 function generateId(length: number) {
@@ -51,9 +47,9 @@ function Board() {
   const [isLoading, setIsLoading] = useState(false);
   const taskInput = useRef<HTMLInputElement>(null);
 
-  const handleDragEnd = (event: unknown) => {
-    console.log(event.over.id);
-  };
+  // const handleDragEnd = (event: unknown) => {
+  //   console.log(event.over.id);
+  // };
 
   useKey("Enter", function () {
     if (document.activeElement === taskInput.current) {
@@ -78,7 +74,7 @@ function Board() {
   const addTask = () => {
     setIsLoading(true);
 
-    const task: Task = {
+    const task: ITask = {
       id: generateId(10),
       description: newTask,
       column_id: currentColumn,
@@ -98,9 +94,17 @@ function Board() {
     setIsLoading(false);
   };
 
+  const editTaskDescription = (targetTask: ITask, newDescription: string) => {
+    const taskIndex = taskList.findIndex((task) => task.id === targetTask.id);
+    targetTask = { ...targetTask, description: newDescription };
+
+    taskList.splice(taskIndex, 1, targetTask);
+    setCurrentColumn("");
+  };
+
   return (
     <div className="flex flex-col">
-      <DndContext onDragEnd={handleDragEnd}>
+      <DndContext>
         <div className="columns">
           {columns.map((column) => (
             <div className="column" key={column.id}>
@@ -115,6 +119,7 @@ function Board() {
                           key={task.id}
                           task={task}
                           onRemoveTask={removeTask}
+                          onEditTask={editTaskDescription}
                         />
                       )
                   )}
@@ -150,7 +155,7 @@ function Board() {
                 ) : (
                   <button
                     type="button"
-                    className="button is-text btn-task is-fullwidth is-left is-flex is-justify-content-flex-start"
+                    className="button is-text btn-task is-fullwidth is-left is-flex is-justify-content-flex-start mt-4"
                     onClick={() => setCurrentColumn(column.id)}
                   >
                     <i className="fa-solid fa-plus"></i>

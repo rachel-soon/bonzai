@@ -12,12 +12,13 @@
 
 .task-card {
   color: white !important;
-  padding: 0.7rem !important;
+  padding: 0.5rem !important;
   box-shadow: none !important;
   border-radius: 0.5rem !important;
-  margin: 0.5rem 0rem !important;
+  margin: 0.1rem 0rem !important;
   border: 1px solid transparent;
   transition: all 0.08s ease-in-out;
+  width: 100%;
 
   &:hover {
     border: 1px solid #44546f;
