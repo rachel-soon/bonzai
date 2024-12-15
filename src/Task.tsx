@@ -1,21 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import PropTypes, { InferProps } from "prop-types";
+import { ITask } from "./Board";
+interface TaskProps {
+  task: ITask;
+  onRemoveTask: (id: string) => void;
+  onEditTask: (task: ITask, description: string) => void;
+}
 
-Task.propTypes = {
-  task: {
-    id: PropTypes.string,
-    description: PropTypes.string,
-    column_id: PropTypes.string,
-  },
-  onRemoveTask: PropTypes.func.isRequired,
-  onEditTask: PropTypes.func.isRequired,
-};
-
-function Task({
-  task,
-  onRemoveTask,
-  onEditTask,
-}: InferProps<typeof Task.propTypes>) {
+function Task({ task, onRemoveTask, onEditTask }: TaskProps) {
   const [taskDescription, setTaskDescription] = useState(task.description);
   const [readonly, setReadOnly] = useState(true);
   const input = useRef<HTMLInputElement>(null);

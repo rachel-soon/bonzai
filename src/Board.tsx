@@ -5,7 +5,7 @@ import { DndContext } from "@dnd-kit/core";
 import { useState, useRef, useEffect } from "react";
 import { useKey } from "./hooks/useKey";
 
-interface ITask {
+export interface ITask {
   id: string;
   description: string;
   column_id: string;
@@ -13,9 +13,6 @@ interface ITask {
 
 // https://egghead.io/lessons/react-reorder-a-list-with-react-beautiful-dnd
 // NOTE: onDragEnd is the only required callback
-
-// Today: Get the task component to work
-
 const columns = [
   {
     title: "To Do",
@@ -46,10 +43,6 @@ function Board() {
   const [newTask, setNewTask] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const taskInput = useRef<HTMLInputElement>(null);
-
-  // const handleDragEnd = (event: unknown) => {
-  //   console.log(event.over.id);
-  // };
 
   useKey("Enter", function () {
     if (document.activeElement === taskInput.current) {
