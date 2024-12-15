@@ -91,8 +91,9 @@ function Board() {
     const taskIndex = taskList.findIndex((task) => task.id === targetTask.id);
     targetTask = { ...targetTask, description: newDescription };
 
-    taskList.splice(taskIndex, 1, targetTask);
+    const removedTask = taskList.splice(taskIndex, 1, targetTask);
     setCurrentColumn("");
+    setTaskList(taskList.filter((task) => task.id !== removedTask[0].id));
   };
 
   return (
