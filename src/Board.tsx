@@ -82,7 +82,7 @@ export default function Board() {
       setTaskList(taskList.filter((task) => task.id !== id));
       setActiveColumnId("");
     },
-    [taskList, setTaskList, setActiveColumnId]
+    [taskList]
   );
 
   const editTaskDescription = useCallback(
@@ -96,7 +96,7 @@ export default function Board() {
       setTaskList(updatedTaskList);
       setActiveColumnId("");
     },
-    [taskList, setTaskList, setActiveColumnId]
+    [taskList]
   );
 
   return (

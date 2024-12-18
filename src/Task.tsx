@@ -16,8 +16,6 @@ export default memo(function Task({
   const [readonly, setReadOnly] = useState(true);
   const input = useRef<HTMLInputElement>(null);
 
-  console.log(task.id)
-
   useEffect(() => {
     if (!readonly && input.current) {
       input.current.focus();
