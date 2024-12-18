@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ITask } from "./Board";
+import { useKey } from "./hooks/useKey";
 interface PropsTask {
   task: ITask;
   onRemoveTask: (id: string) => void;
@@ -32,6 +33,18 @@ export default function Task({ task, onRemoveTask, onEditTask }: PropsTask) {
     onEditTask(task, taskDescription);
   };
 
+  useKey("Enter", () => {
+    if (document.activeElement === input.current) {
+      handleEdit();
+    }
+  });
+
+  useKey("Escape", () => {
+    if (document.activeElement === input.current) {
+      setReadOnly(true);
+    }
+  });
+
   return (
     <>
       {readonly ? (
@@ -41,8 +54,8 @@ export default function Task({ task, onRemoveTask, onEditTask }: PropsTask) {
             onClick={() => setReadOnly(false)}
           >
             <i className="fa-solid fa-fire"></i>
-            <div className="ml-3">{task.description}</div>
-          </div>{" "}
+            <div className="mx-3">{task.description}</div>
+          </div>
           <div className="icon-container" onClick={() => handleDelete(task.id)}>
             <i className="fa-solid fa-xmark"></i>
           </div>
