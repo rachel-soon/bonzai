@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, memo } from "react";
 import { ITask } from "./Board";
 import { useKey } from "./hooks/useKey";
 interface PropsTask {
@@ -7,10 +7,16 @@ interface PropsTask {
   onEditTask: (task: ITask, description: string) => void;
 }
 
-export default function Task({ task, onRemoveTask, onEditTask }: PropsTask) {
+export default memo(function Task({
+  task,
+  onRemoveTask,
+  onEditTask,
+}: PropsTask) {
   const [taskDescription, setTaskDescription] = useState(task.description);
   const [readonly, setReadOnly] = useState(true);
   const input = useRef<HTMLInputElement>(null);
+
+  console.log(task.id)
 
   useEffect(() => {
     if (!readonly && input.current) {
@@ -74,4 +80,4 @@ export default function Task({ task, onRemoveTask, onEditTask }: PropsTask) {
       )}
     </>
   );
-}
+});

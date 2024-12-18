@@ -1,6 +1,6 @@
 import Column from "./Column";
 import Task from "./Task";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { useKey } from "./hooks/useKey";
 
 const columns = [
@@ -77,21 +77,27 @@ export default function Board() {
     }, 450);
   };
 
-  const removeTask = (id: string) => {
-    setTaskList(taskList.filter((task) => task.id !== id));
-    setActiveColumnId("");
-  };
+  const removeTask = useCallback(
+    (id: string) => {
+      setTaskList(taskList.filter((task) => task.id !== id));
+      setActiveColumnId("");
+    },
+    [taskList, setTaskList, setActiveColumnId]
+  );
 
-  const editTaskDescription = (targetTask: ITask, newDescription: string) => {
-    const updatedTask = { ...targetTask, description: newDescription };
+  const editTaskDescription = useCallback(
+    (targetTask: ITask, newDescription: string) => {
+      const updatedTask = { ...targetTask, description: newDescription };
 
-    const updatedTaskList = taskList.map((task) =>
-      task.id === targetTask.id ? updatedTask : task
-    );
+      const updatedTaskList = taskList.map((task) =>
+        task.id === targetTask.id ? updatedTask : task
+      );
 
-    setTaskList(updatedTaskList);
-    setActiveColumnId("");
-  };
+      setTaskList(updatedTaskList);
+      setActiveColumnId("");
+    },
+    [taskList, setTaskList, setActiveColumnId]
+  );
 
   return (
     <div className="flex flex-col">
