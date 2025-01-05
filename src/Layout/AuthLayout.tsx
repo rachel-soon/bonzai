@@ -1,34 +1,38 @@
 import { Outlet } from "react-router";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 function Auth() {
   return (
     <>
-      <main>
-        <nav className="navbar">
-          <div className="container">
-            <div id="navMenu" className="navbar-menu">
-              <div className="navbar-end">
-                <a
-                  className="navbar-item"
-                  href="https://github.com/rachel-soon/bonzai"
-                  target="_blank"
-                >
-                  <i className="fa-brands fa-github"></i>GitHub
-                </a>
+      <main className="is-relative">
+        <section className="hero is-fullheight-with-navbar">
+          <nav className="navbar">
+            <div className="container">
+              <div id="navMenu" className="navbar-menu">
+                <div className="navbar-end">
+                  <a
+                    className="navbar-item"
+                    href="https://github.com/rachel-soon/bonzai"
+                    target="_blank"
+                  >
+                    <i className="fa-brands fa-github"></i>GitHub
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        </nav>
+          </nav>
 
-        <section className="hero is-fullheight-with-navbar">
           <div className="hero-body">
             <div className="container columns is-vcentered is-centered">
               <div className="column">
-                <p className="title">
+                <DotLottieReact
+                  src="https://lottie.host/30627379-4a49-4a6e-8d66-585381f7cd1a/Aj6gw2mwYQ.lottie"
+                  loop
+                  autoplay
+                />
+                <p className="title" style={{ textAlign: "center" }}>
                   Bonzai &nbsp;
-                  <i className="fa-solid fa-tree"></i>
                 </p>
-                <p className="subtitle">Focus on what matters.</p>
               </div>
 
               <div className="column">
@@ -37,6 +41,13 @@ function Auth() {
             </div>
           </div>
         </section>
+
+        <p
+          className="is-size-7"
+          style={{ position: "absolute", bottom: 0, right: 20, zIndex: 90 }}
+        >
+          Hosted with GitHub Pages
+        </p>
       </main>
     </>
   );
