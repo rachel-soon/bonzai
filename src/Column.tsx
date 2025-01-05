@@ -6,7 +6,7 @@ interface PropsColumn {
   id: string;
 }
 
-export default function Column({ children, id }: PropsColumn) {
+export default function Column({ children }: PropsColumn) {
   // const { setNodeRef, isOver } = useDroppable({
   //   id: id,
   // });
