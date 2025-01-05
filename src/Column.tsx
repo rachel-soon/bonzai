@@ -1,4 +1,4 @@
-import { useDroppable } from "@dnd-kit/core";
+// import { useDroppable } from "@dnd-kit/core";
 import React from "react";
 
 interface PropsColumn {
@@ -7,19 +7,18 @@ interface PropsColumn {
 }
 
 export default function Column({ children, id }: PropsColumn) {
-  const { setNodeRef, isOver } = useDroppable({
-    id: id,
-  });
+  // const { setNodeRef, isOver } = useDroppable({
+  //   id: id,
+  // });
 
-  const style = {
-    border: isOver ? "2px solid red" : undefined,
-  };
+  // const style = {
+  //   border: isOver ? "2px solid red" : undefined,
+  // };
 
   return (
     <>
-      <div className="card column-card" ref={setNodeRef} style={style}>
-        {children}
-      </div>
+      {/* ref={setNodeRef} style={style} */}
+      <div className="card column-card">{children}</div>
     </>
   );
 }
