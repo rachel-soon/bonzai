@@ -14,7 +14,7 @@ export default function App() {
     <>
       <AuthProvider>
         <Routes>
-          <Route element={<AuthLayout />}>
+          <Route element={<AuthLayout />} path="bonzai">
             <Route path="login" element={<Login />}></Route>
             <Route path="register" element={<Register />}></Route>
           </Route>
